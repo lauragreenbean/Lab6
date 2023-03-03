@@ -31,7 +31,7 @@
                     class="rounded-circle img-fluid" style="width: 150px;">
                   <h5 class="my-3 name">John Smith</h5>
                   <p class="text-muted mb-1">Full Stack Developer</p>
-                  <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                  <p class="text-muted mb-4 city">Bay Area, San Francisco, CA</p>
                   <div class="d-flex justify-content-center mb-2">
                     <button type="button" class="btn btn-primary">Follow</button>
                     <button type="button" class="btn btn-outline-primary ms-1">Message</button>
@@ -42,8 +42,8 @@
                 <div class="card-body p-0">
                   <ul class="list-group list-group-flush rounded-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fas fa-globe fa-lg text-warning"></i>
-                      <p class="mb-0">https://mdbootstrap.com</p>
+                  <!--    <i class="fas fa-globe fa-lg text-warning"></i>
+                      <p class="mb-0 account">https://mdbootstrap.com</p>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                       <i class="fab fa-github fa-lg" style="color: #333333;"></i>
@@ -63,8 +63,9 @@
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div>  -->
             </div>
+      
             <div class="col-lg-8">
               <div class="card mb-4">
                 <div class="card-body">
@@ -91,25 +92,18 @@
                       <p class="mb-0">Phone</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">(097) 234-5678</p>
+                      <p class="text-muted mb-0 phone">(097) 234-5678</p>
                     </div>
                   </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <p class="mb-0">Mobile</p>
-                    </div>
-                    <div class="col-sm-9">
-                      <p class="text-muted mb-0">(098) 765-4321</p>
-                    </div>
-                  </div>
+                 
+                  
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Address</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                      <p class="text-muted mb-0 address">Bay Area, San Francisco, CA</p>
                     </div>
                   </div>
                 </div>
@@ -140,6 +134,7 @@ fetch('https://randomuser.me/api')
 
     //get user data from response
     let user = data.results[0];
+
     let userName = user.name.first + ' ' + user.name.last;
     document.querySelector('.name').innerHTML = userName;
     document.querySelectorAll('.name').forEach((item) => {
@@ -147,23 +142,22 @@ fetch('https://randomuser.me/api')
     });
     document.getElementById('user-image').src = user.picture.large;
     document.querySelector('#user-image').setAttribute('alt', userName);
-    });
-    //set user email
+    
     let userEmail = user.email;
     document.querySelector('.email').innerHTML = userEmail;
-    document.querySelectorAll('.email').forEach((item) => {
-        item.innerText = userEmail;
-    });
 
     //set user phone
     let userPhone = user.phone;
-    document.getElementById('user-phone').innerHTML = user.phone;
-    document.querySelectorAll('.phone').forEach((item) => {
-        item.innerText = userPhone;
-    });
-    //set user location
-    document.getElementById('user-location').innerHTML = user.location.city + ', ' + user.location.state + ', ' + user.location.country;
+    document.querySelector('.phone').innerHTML = userPhone;
 
+    //set user location
+    let userLocation = user.location.city + ', ' + user.location.state + ', ' + user.location.country;
+    document.querySelector('.address').innerHTML = userLocation;
+   
+    let userCity = user.location.city + ', ' + user.location.country;
+    document.querySelector('.city').innerHTML = userCity;
+
+});
    
 
 </script>
